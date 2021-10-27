@@ -24,12 +24,8 @@ class Deck {
     }
     func getCards(_ start: Int, _ end: Int) -> [Card]{
         var cardSet : [Card] = []
-        var i: Int = start
-        for card in cards {
-            if(i>=start) && (i<=end){
-                cardSet.append(card)
-                i=i+1
-            }
+        for index in start...end{
+            cardSet.append(cards[index])
         }
         return cardSet
     }

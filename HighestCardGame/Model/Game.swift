@@ -15,25 +15,29 @@ class Game {
     public var card1: Card?
     public var card2: Card?
     public var pool: [Card] = []
+    public var roundWinner :Int = 2
     func start() {
+        self.players.append(Player("User"))
         self.players.append(Player("Computer"))
-        self.players.append(Player("Person"))
         self.deck.shuffle()
         self.players[0].hand = deck.getCards(0,25)
         self.players[1].hand = deck.getCards(26,51)
-        print(players[0].hand.count)
-        print(players[1].hand.count)
     }
     func playRound(){
-        self.card1 = players[0].hand[roundNumber]
-        self.card2 = players[1].hand[roundNumber]
+        self.card1 = players[0].hand.removeFirst()
+        self.card2 = players[1].hand.removeFirst()
+        pool.append(card1!)
+        pool.append(card2!)
         let winner = self.compare(self.card1, self.card2)
         if(winner==0){
-            giveCards(self.card1, self.card2,0)
+            giveCardsFromPool(0)
+            print("0 won")
         }else if(winner==1){
-            giveCards(self.card1, self.card2,1)
+            giveCardsFromPool(1)
+            print("1 won")
         }else{ //draw
-            //add cards to the Pool
+            //do nothing
+            print("Draw")
         }
         self.roundNumber+=1
     }
@@ -41,11 +45,20 @@ class Game {
         return false
     }
     func compare(_ card1: Card!, _ card2: Card!) -> Int{
-        //0 if card1 wins, 1 if card 2 winds, else return -1 for a draw
-        return 0
+        if(card1.getRank().rawValue > card2.getRank().rawValue){
+            self.roundWinner = 0
+            return 0
+        }else if(card1.getRank().rawValue < card2.getRank().rawValue){
+            self.roundWinner = 1
+            return 1
+        }
+        self.roundWinner = -1
+        return -1
     }
-    func giveCards(_ card1: Card!, _ card2: Card!, _ winner: Int){
-        
-    } // takes 2 cards, adds them onto the players deck (at back of pack)
-    
+    func giveCardsFromPool( _ winner: Int){
+        for card in self.pool{
+            self.players[winner].hand.append(card)
+        }
+        self.pool = []
+    }
 }

@@ -15,7 +15,9 @@ class Deck {
         let suits = [Suit.spades, Suit.hearts, Suit.diamonds, Suit.clubs]
         for suit in suits{
             for rank in ranks{
-                self.cards.append(Card(rank, of: suit))
+                let sign = getSymbol(suit)
+                let label = getLabel(rank)
+                self.cards.append(Card(rank, of: suit, with: sign, label: label))
             }
         }
     }
@@ -28,5 +30,55 @@ class Deck {
             cardSet.append(cards[index])
         }
         return cardSet
+    }
+    func getSymbol(_ suit: Suit) -> Symbol {
+        let symbol: Symbol
+        switch(suit.rawValue){
+        case "S":
+            symbol = Symbol.spades
+        case "D":
+            symbol = Symbol.diamonds
+        case "H":
+            symbol = Symbol.hearts
+        case "C":
+            symbol = Symbol.clubs
+        default:
+            symbol = Symbol.hearts
+        }
+        return symbol
+    }
+    func getLabel(_ rank: Rank) -> RankLabel {
+        let label: RankLabel
+        switch(rank.rawValue){
+        case 14:
+            label = RankLabel.ace
+        case 13:
+            label = RankLabel.king
+        case 12:
+            label = RankLabel.queen
+        case 11:
+            label = RankLabel.jack
+        case 10:
+            label = RankLabel.ten
+        case 9:
+            label = RankLabel.nine
+        case 8:
+            label = RankLabel.eight
+        case 7:
+            label = RankLabel.seven
+        case 6:
+            label = RankLabel.six
+        case 5:
+            label = RankLabel.five
+        case 4:
+            label = RankLabel.four
+        case 3:
+            label = RankLabel.three
+        case 2:
+            label = RankLabel.two
+        default:
+            label = RankLabel.ace
+        }
+        return label
     }
 }

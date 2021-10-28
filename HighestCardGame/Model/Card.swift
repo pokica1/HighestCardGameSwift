@@ -11,10 +11,14 @@ class Card {
 
     private let rank: Rank
     private let suit: Suit
+    private let symbol: Symbol
+    private let label: RankLabel
     
-    init(_ rank: Rank, of suit: Suit) {
+    init(_ rank: Rank, of suit: Suit, with symbol: Symbol, label: RankLabel) {
         self.rank = rank
         self.suit = suit
+        self.symbol = symbol
+        self.label = label
     }
     
     func getRank() -> Rank {
@@ -23,6 +27,12 @@ class Card {
     
     func getSuit() -> Suit {
         return suit
+    }
+    func getSymbol() -> Symbol {
+        return symbol
+    }
+    func getLabel() -> RankLabel {
+        return label
     }
     
     func compareRank (with otherCard: Card) -> Bool {
@@ -34,7 +44,11 @@ class Card {
     }
     
     func describe() {
-        print("card is ", self.getRank().rawValue, " of ", self.getSuit().rawValue)
+        print("card is ", self.getRank().rawValue, " of ", self.getSuit().rawValue, " with sign ", self.getSymbol().rawValue, " and label ", self.getLabel().rawValue)
+    }
+    func describeShort() -> String {
+        let short: String = self.getLabel().rawValue + "" + self.getSymbol().rawValue
+        return short
     }
     
     func getImage() -> String {

@@ -21,7 +21,6 @@
 		7D98A0122724AC9D00705C2E /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98A0112724AC9D00705C2E /* Deck.swift */; };
 		7D98A0142724ACC000705C2E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98A0132724ACC000705C2E /* Player.swift */; };
 		7D98A0182724ACF600705C2E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98A0172724ACF600705C2E /* Game.swift */; };
-		7D98A01A2724AD1500705C2E /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98A0192724AD1500705C2E /* Hand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		7D98A0112724AC9D00705C2E /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7D98A0132724ACC000705C2E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7D98A0172724ACF600705C2E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		7D98A0192724AD1500705C2E /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +92,6 @@
 				7D98A0112724AC9D00705C2E /* Deck.swift */,
 				7D98A0132724ACC000705C2E /* Player.swift */,
 				7D98A0172724ACF600705C2E /* Game.swift */,
-				7D98A0192724AD1500705C2E /* Hand.swift */,
 				7D98A00F2724A92500705C2E /* Card.swift */,
 				7D5242CD2727537600D015CF /* Enumerations.swift */,
 			);
@@ -305,7 +302,6 @@
 				7D5242CE2727537600D015CF /* Enumerations.swift in Sources */,
 				7D98A0122724AC9D00705C2E /* Deck.swift in Sources */,
 				7D989FE027247CA500705C2E /* SceneDelegate.swift in Sources */,
-				7D98A01A2724AD1500705C2E /* Hand.swift in Sources */,
 				7D98A0142724ACC000705C2E /* Player.swift in Sources */,
 				7D98A0102724A92500705C2E /* Card.swift in Sources */,
 				7D98A0182724ACF600705C2E /* Game.swift in Sources */,

@@ -11,12 +11,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     @IBOutlet weak var ResultsTable: UITableView!
-    var names = ["John","Jane","Joe"]
     var summaries = [""]
-    
     public var game: Game = Game()
     
-    @IBOutlet weak var startGame: UIButton!
+    @IBOutlet weak var resetGame: UIButton!
     @IBOutlet weak var userField: UILabel!
     @IBOutlet weak var computerField: UILabel!
     @IBOutlet weak var userCardNumber: UILabel!
@@ -24,7 +22,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var userCardOutput: UIImageView!
     @IBOutlet weak var computerCardOutput: UIImageView!
     @IBOutlet weak var gameStatus: UILabel!
-
+    @IBOutlet weak var drawCard: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +33,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         computerCardOutput.image = UIImage(named:"blue_back.png")
         gameStatus.text=""
         game.start()
+    }
+    
+    @IBAction func resetGame(_ sender: Any) {
+        self.summaries = [""]
+        self.game.reset()
+        userCardOutput.image = UIImage(named:"blue_back.png")
+        computerCardOutput.image = UIImage(named:"blue_back.png")
+        userCardNumber.text = String(self.game.players[0].hand.count)
+        computerCardNumber.text = String(self.game.players[1].hand.count)
+        ResultsTable.reloadData()
+        gameStatus.text = ""
+        drawCard.isEnabled = true
     }
     
     @IBAction func drawCard(_ sender: Any) {
@@ -52,10 +63,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             summary = "U: " + self.game.card1!.describeShort() + " vs " + " C: " + self.game.card2!.describeShort() + " Draw"
         }
         //4. update the count label to reflect new count of cards in each hand
-        //
+        userCardNumber.text = String(self.game.players[0].hand.count)
+        computerCardNumber.text = String(self.game.players[1].hand.count)
+        print("user: " + String(self.game.players[0].hand.count))
+        print("computer: " + String(self.game.players[1].hand.count))
         //5. Add the result to the table.
         summaries.append(summary)
         ResultsTable.reloadData()
+        //6. Check if game is over, if so disable button, display game over, 40 rounds playeda
+        if(self.game.gameIsOver()){
+            gameStatus.text = "Game Over"
+            drawCard.isEnabled = false
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Game") {

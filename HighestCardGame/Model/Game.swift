@@ -16,12 +16,22 @@ class Game {
     public var card2: Card?
     public var pool: [Card] = []
     public var roundWinner :Int = 2
+    public var isOver = false
     func start() {
         self.players.append(Player("User"))
         self.players.append(Player("Computer"))
         self.deck.shuffle()
         self.players[0].hand = deck.getCards(0,25)
         self.players[1].hand = deck.getCards(26,51)
+    }
+    func reset(){
+        self.deck.shuffle()
+        self.players[0].hand = deck.getCards(0,25)
+        self.players[1].hand = deck.getCards(26,51)
+        self.pool = []
+        self.roundNumber = 0
+        self.roundWinner = 2
+        self.isOver = false
     }
     func playRound(){
         self.card1 = players[0].hand.removeFirst()
@@ -40,9 +50,18 @@ class Game {
             print("Draw")
         }
         self.roundNumber+=1
+        
     }
-    func isOver() -> Bool {
-        return false
+    func gameIsOver() -> Bool {
+        if(self.roundNumber>=30){
+            self.isOver = true
+        }
+        if(players[0].hand.count<=0){
+            self.isOver = true
+        }else if (players[1].hand.count<=0) {
+            self.isOver = true
+        }
+        return self.isOver
     }
     func compare(_ card1: Card!, _ card2: Card!) -> Int{
         if(card1.getRank().rawValue > card2.getRank().rawValue){

@@ -11,7 +11,7 @@ Swift
 
 ## To run this app on the local computer :stopwatch:
 
-In Swift press play. 
+In Xcode press play. 
 
 ## Instruction on how to play the game :memo:
 

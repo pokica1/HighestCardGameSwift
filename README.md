@@ -1,4 +1,4 @@
-# HighestCardGameSwift :iphone:
+# Highest Card Game Swift :iphone:
 
 An app that you can play a card game against the computer.\ 
 The user that has the highest value card wins the round.\

@@ -5,7 +5,7 @@ The user that has the highest value card wins the round.\
 The player that lost the round receives the cards that have been turned up.\
 This app has been created with Swift.
 
-##Main tool used :hammer_and_wrench:
+## Main tool used :hammer_and_wrench:
 
 Swift
 
